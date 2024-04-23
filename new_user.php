@@ -31,6 +31,7 @@
 					</div>
 					<div class="col-md-6">
 						<b class="text-muted">System Credentials</b>
+						<!--Only admin can have the feature to select the role-->
 						<?php if($_SESSION['login_type'] == 1): ?>
 						<div class="form-group">
 							<label for="" class="control-label">User Role</label>
@@ -69,6 +70,7 @@
 		</div>
 	</div>
 </div>
+
 <script>
 	$('[name="password"],[name="cpass"]').keyup(function(){
 		var pass = $('[name="password"]').val()

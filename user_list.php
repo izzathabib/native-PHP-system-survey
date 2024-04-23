@@ -19,12 +19,14 @@
 					</tr>
 				</thead>
 				<tbody>
+					<!--Fetches data from database to display in table form-->
 					<?php
 					$i = 1;
 					$type = array('',"Admin","Staff","Subscriber");
 					$qry = $conn->query("SELECT *,concat(lastname,', ',firstname,' ',middlename) as name FROM users order by concat(lastname,', ',firstname,' ',middlename) asc");
-					while($row= $qry->fetch_assoc()):
+					while($row= $qry->fetch_assoc())://Iterate through each row of the result. Fetches value fom each row, display as a row. 
 					?>
+					<!--End fetches data-->
 					<tr>
 						<th class="text-center"><?php echo $i++ ?></th>
 						<td><b><?php echo ucwords($row['name']) ?></b></td>
