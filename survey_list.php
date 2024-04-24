@@ -8,6 +8,7 @@
 		</div>
 		<div class="card-body">
 			<table class="table tabe-hover table-bordered" id="list">
+				<!--Ensure each column are in a consistent width based on the table width-->
 				<colgroup>
 					<col width="5%">
 					<col width="20%">
@@ -16,6 +17,7 @@
 					<col width="20%">
 					<col width="15%">
 				</colgroup>
+				<!---->
 				<thead>
 					<tr>
 						<th class="text-center">#</th>

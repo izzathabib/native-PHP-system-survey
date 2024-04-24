@@ -6,7 +6,7 @@ foreach($qry as $k => $v){
 		$k = 'stitle';
 	$$k = $v;
 }
-$answers = $conn->query("SELECT distinct(user_id) from answers where survey_id ={$id}")->num_rows;
+$answers = $conn->query("SELECT distinct(user_id) from answers where survey_id =$id")->num_rows;//num_rows = to get num of row returned by the query
 ?>
 <div class="col-lg-12">
 	<div class="row">

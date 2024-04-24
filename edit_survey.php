@@ -7,4 +7,3 @@ foreach($qry as $k => $v){
 	$$k = $v;
 }
 include 'new_survey.php';
-?>

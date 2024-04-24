@@ -7,8 +7,8 @@ if(!isset($conn)){
 	<div class="card">
 		<div class="card-body">
 			<form action="" id="manage_survey">
-				<input type="hidden" name="id" value="<?php echo isset($id) ? $id : '' ?>">
-				<input type="hidden" name="user_id" value="<?php echo isset($_SESSION['login_id']) ? $_SESSION['login_id'] : '' ?>">
+				<input type="hidden" name="id" value="<?php echo isset($id) ? $id : '' ?>"> <!--Carrying ID for which data that it is dealing with-->
+				<input type="hidden" name="user_id" value="<?php echo isset($_SESSION['login_id']) ? $_SESSION['login_id'] : '' ?>"> <!--Associate the form submission with a specific user-->
 				<div class="row">
 					<div class="col-md-6 border-right">
 						<div class="form-group">

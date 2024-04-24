@@ -36,6 +36,7 @@
     <section class="content">
       <div class="container-fluid">
          <?php 
+          //Get page value from URL
           $page = isset($_GET['page']) ? $_GET['page'] : 'home';
           include $page.'.php';
           ?>
