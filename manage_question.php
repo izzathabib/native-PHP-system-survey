@@ -217,7 +217,9 @@ foreach($qry as $k => $v){
 	</div>
 </div>
 <script>
+	//Add new checkboxes
 	function new_check(_this){
+		// _this represents the button that was clicked
 		var tbody=_this.closest('.row').siblings('table').find('tbody')
 		var count = tbody.find('tr').last().find('.icheck-primary').attr('data-count')
 			count++;
@@ -230,6 +232,7 @@ foreach($qry as $k => $v){
 		tr.append(opt)
 		tbody.append(tr)
 	}
+	//Add new radio
 	function new_radio(_this){
 		var tbody=_this.closest('.row').siblings('table').find('tbody')
 		var count = tbody.find('tr').last().find('.icheck-primary').attr('data-count')

@@ -47,6 +47,7 @@ $answers = $conn->query("SELECT distinct(user_id) from answers where survey_id =
 						<div class="row">
 							<div class="col-md-12">	
 								<span class="dropleft float-right">
+									<!-- <a> element Used for three dot at each question for edit/delete menu-->
 									<a class="fa fa-ellipsis-v text-dark" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
 									<div class="dropdown-menu" style="">
 								        <a class="dropdown-item edit_question text-dark" href="javascript:void(0)" data-id="<?php echo $row['id'] ?>">Edit</a>
@@ -61,6 +62,7 @@ $answers = $conn->query("SELECT distinct(user_id) from answers where survey_id =
 						<input type="hidden" name="qid[]" value="<?php echo $row['id'] ?>">	
 							<?php
 								if($row['type'] == 'radio_opt'):
+									//Iterate through associative array
 									foreach(json_decode($row['frm_option']) as $k => $v):
 							?>
 							<div class="icheck-primary">
@@ -78,7 +80,7 @@ $answers = $conn->query("SELECT distinct(user_id) from answers where survey_id =
 								<?php endforeach; ?>
 						<?php else: ?>
 							<div class="form-group">
-								<textarea name="answer[<?php echo $row['id'] ?>]" id="" cols="30" rows="4" class="form-control" placeholder="Write Something Here..."></textarea>
+								<textarea name="answer[<?php echo $row['id'] ?>]" id="" cols="30" rows="4" class="form-control" placeholder="Write Your Answer Here..."></textarea>
 							</div>
 						<?php endif; ?>
 						</div>	

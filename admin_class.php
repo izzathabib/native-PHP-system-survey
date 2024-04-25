@@ -196,6 +196,8 @@ Class Action {
 	function action_update_qsort(){
 		extract($_POST);
 		$i = 0;
+		// It will loop through each of the question based on our order
+		// set order_by based on 
 		foreach($qid as $k => $v){
 			$i++;
 			$update[] = $this->db->query("UPDATE questions set order_by = $i where id = $v");
