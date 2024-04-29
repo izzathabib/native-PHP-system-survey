@@ -1,11 +1,13 @@
 <?php include 'db_connect.php' ?>
 <?php
+// Used to fetch question from database but not to display
 if(isset($_GET['id'])){
 	$qry = $conn->query("SELECT * FROM questions where id = ".$_GET['id'])->fetch_array();
 foreach($qry as $k => $v){
 	$$k = $v;
 }
 }
+// --!--
 ?>
 <div class="container-fluid">
 	<form action="" id="manage-question">
@@ -83,7 +85,7 @@ foreach($qry as $k => $v){
 						      </table>
 						      <div class="row">
 						      <div class="col-sm-12 text-center">
-						      	<button class="btn btn-sm btn-flat btn-default" type="button" onclick="<?php echo $type ?>($(this))"><i class="fa fa-plus"></i> Add</button>
+						      	<button class="btn btn-sm btn-flat btn-default" type="button" onclick="<?php echo 'new_'. $type ?>($(this))"><i class="fa fa-plus"></i> Add</button>
 						      </div>
 						      </div>
 						    </div>
@@ -218,7 +220,7 @@ foreach($qry as $k => $v){
 </div>
 <script>
 	//Add new checkboxes
-	function new_check(_this){
+	function new_check_opt(_this){
 		// _this represents the button that was clicked
 		var tbody=_this.closest('.row').siblings('table').find('tbody')
 		var count = tbody.find('tr').last().find('.icheck-primary').attr('data-count')
@@ -233,7 +235,7 @@ foreach($qry as $k => $v){
 		tbody.append(tr)
 	}
 	//Add new radio
-	function new_radio(_this){
+	function new_radio_opt(_this){
 		var tbody=_this.closest('.row').siblings('table').find('tbody')
 		var count = tbody.find('tr').last().find('.icheck-primary').attr('data-count')
 			count++;
@@ -246,6 +248,7 @@ foreach($qry as $k => $v){
 		tr.append(opt)
 		tbody.append(tr)
 	}
+	// Bila tekan add dekat managa_question dia akan clone based on current question answer type
 	function check_opt(){
 		var check_opt_clone = $('#check_opt_clone').clone()
 		$('.preview').html(check_opt_clone.html())
@@ -260,15 +263,16 @@ foreach($qry as $k => $v){
 		$('.preview').html(textfield_s_clone.html())
 	}
 	$('[name="type"]').change(function(){
-		//$(this) used to determine which function to call
+		/* 1. $(this) used to determine which function to call
+		   2. This line is used to display at the preview */
 		window[$(this).val()]()
 	})
 
 	//This is the shorthand for $(document).ready(function() { ... }) in jQuery
 	$(function () {
 	$('#manage-question').submit(function(e){
-		e.preventDefault()
-		start_load()
+		e.preventDefault() // Prevent default bahavior of an event
+		start_load() // Display load indicator
 		// $('#msg').html('')
 		$.ajax({
 			url:'ajax.php?action=save_question',
@@ -282,7 +286,7 @@ foreach($qry as $k => $v){
 				if(resp == 1){
 					alert_toast('Data successfully saved.',"success");
 					setTimeout(function(){
-						location.reload()
+						location.reload() // Reload current URL like a refresh button
 					},1500)
 				}
 			}

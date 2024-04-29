@@ -167,6 +167,7 @@ Class Action {
 				foreach ($label as $k => $v) {
 					$i = 0 ;
 					while($i == 0){
+						// Used to generate random key
 						$k = substr(str_shuffle(str_repeat($x='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(5/strlen($x)) )),1,5);
 						if(!isset($arr[$k]))
 							$i = 1;
@@ -186,6 +187,7 @@ Class Action {
 		if($save)
 			return 1;
 	}
+
 	function delete_question(){
 		extract($_POST);
 		$delete = $this->db->query("DELETE FROM questions where id = ".$id);
@@ -193,6 +195,8 @@ Class Action {
 			return 1;
 		}
 	}
+
+	// Handle arrangement of questions
 	function action_update_qsort(){
 		extract($_POST);
 		$i = 0;

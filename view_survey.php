@@ -115,7 +115,8 @@ $answers = $conn->query("SELECT distinct(user_id) from answers where survey_id =
 		uni_modal("New Question","manage_question.php?sid=<?php echo $id ?>","large")
 	})
 	$('.edit_question').click(function(){
-		uni_modal("New Question","manage_question.php?sid=<?php echo $id ?>&id="+$(this).attr('data-id'),"large")
+																											// Retrieve question ID
+		uni_modal("Edit Question","manage_question.php?sid=<?php echo $id ?>&id="+$(this).attr('data-id'),"large")
 	})
 	
 	$('.delete_question').click(function(){
