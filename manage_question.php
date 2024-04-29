@@ -254,13 +254,17 @@ foreach($qry as $k => $v){
 		var radio_opt_clone = $('#radio_opt_clone').clone()
 		$('.preview').html(radio_opt_clone.html())
 	}
+	/* used to handle the logic for displaying a text field in the preview section */
 	function textfield_s(){
 		var textfield_s_clone = $('#textfield_s_clone').clone()
 		$('.preview').html(textfield_s_clone.html())
 	}
 	$('[name="type"]').change(function(){
+		//$(this) used to determine which function to call
 		window[$(this).val()]()
 	})
+
+	//This is the shorthand for $(document).ready(function() { ... }) in jQuery
 	$(function () {
 	$('#manage-question').submit(function(e){
 		e.preventDefault()
