@@ -152,7 +152,7 @@ foreach($qry as $k => $v){
       </table>
       <div class="row">
       <div class="col-sm-12 text-center">
-      	<button class="btn btn-sm btn-flat btn-default" type="button" onclick="new_check($(this))"><i class="fa fa-plus"></i> Add</button>
+      	<button class="btn btn-sm btn-flat btn-default" type="button" onclick="new_check_opt($(this))"><i class="fa fa-plus"></i> Add</button>
       </div>
       </div>
     </div>
@@ -208,7 +208,7 @@ foreach($qry as $k => $v){
       </table>
       <div class="row">
       <div class="col-sm-12 text-center">
-      	<button class="btn btn-sm btn-flat btn-default" type="button" onclick="new_radio($(this))"><i class="fa fa-plus"></i> Add</button>
+      	<button class="btn btn-sm btn-flat btn-default" type="button" onclick="new_radio_opt($(this))"><i class="fa fa-plus"></i> Add</button>
       </div>
       </div>
     </div>

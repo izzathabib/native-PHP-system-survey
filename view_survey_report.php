@@ -6,12 +6,14 @@ foreach($qry as $k => $v){
 		$k = 'stitle';
 	$$k = $v;
 }
-$taken = $conn->query("SELECT distinct(user_id) from answers where survey_id ={$id}")->num_rows;
-$answers = $conn->query("SELECT a.*,q.type from answers a inner join questions q on q.id = a.question_id where a.survey_id ={$id}");
+$taken = $conn->query("SELECT distinct(user_id) from answers where survey_id = ".$id)->num_rows;
+// Fetch all column in answer and type in question for the current survey
+$answers = $conn->query("SELECT a.*,q.type from answers a inner join questions q on q.id = a.question_id where a.survey_id = ".$id);
 $ans = array();
 
 while($row=$answers->fetch_assoc()){
 	if($row['type'] == 'radio_opt'){
+		// To get the value of how many times the answer has been chosen
 		$ans[$row['question_id']][$row['answer']][] = 1;
 	}
 	if($row['type'] == 'check_opt'){
@@ -75,12 +77,16 @@ while($row=$answers->fetch_assoc()){
 							<?php if($row['type'] != 'textfield_s'):?>
 								<ul>
 							<?php foreach(json_decode($row['frm_option']) as $k => $v): 
+							  // This part was used to calculate the percentage of repondent that have already select the answer
+								// QUESTION
+								// 1. Kenapa declare as $ans[]?
+								//    My Answer: Because we want to store the value in array			
 								$prog = ((isset($ans[$row['id']][$k]) ? count($ans[$row['id']][$k]) : 0) / $taken) * 100;
 								$prog = round($prog,2);
 								?>
 								<li>
 									<div class="d-block w-100">
-										<b><?php echo $v ?></b>
+										<b><?php  echo $v ?></b>
 									</div>
 									<div class="d-flex w-100">
 									<span class=""><?php echo isset($ans[$row['id']][$k]) ? count($ans[$row['id']][$k]) : 0 ?>/<?php echo $taken ?></span>

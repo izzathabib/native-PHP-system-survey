@@ -120,6 +120,7 @@ $answers = $conn->query("SELECT distinct(user_id) from answers where survey_id =
 	})
 	
 	$('.delete_question').click(function(){
+	 // _conf is a custom function
 	_conf("Are you sure to delete this question?","delete_question",[$(this).attr('data-id')])
 	})
 	function delete_question($id){

@@ -1,16 +1,17 @@
 <?php include 'db_connect.php' ?>
 <?php 
+																																								// Fetch the survey relevant to only current user
 $answers = $conn->query("SELECT distinct(survey_id) from answers where user_id ={$_SESSION['login_id']}");
 ?>
 <div class="col-lg-12">
 	<div class="d-flex w-100 justify-content-center align-items-center mb-2">
 		<label for="" class="control-label">Find Survey</label>
 		<div class="input-group input-group-sm col-sm-5">
-          <input type="text" class="form-control" id="filter" placeholder="Enter keyword...">
-          <span class="input-group-append">
-            <button type="button" class="btn btn-primary btn-flat" id="search">Searh</button>
-          </span>
-        </div>
+			<input type="text" class="form-control" id="filter" placeholder="Enter keyword...">
+			<span class="input-group-append">
+				<button type="button" class="btn btn-primary btn-flat" id="search">Searh</button>
+			</span>
+    </div>
 	</div>
 	<div class=" w-100" id='ns' style="display: none"><center><b>No Result.</b></center></div>
 	<div class="row">
@@ -24,6 +25,7 @@ $answers = $conn->query("SELECT distinct(survey_id) from answers where user_id =
                 <h3 class="card-title"><?php echo ucwords($row['title']) ?></h3>
 
                 <div class="card-tools">
+									<!-- Button to minimize survey view -->
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
                   </button>
