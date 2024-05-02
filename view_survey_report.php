@@ -76,6 +76,7 @@ while($row=$answers->fetch_assoc()){
 							
 							<?php if($row['type'] != 'textfield_s'):?>
 								<ul>
+							<!-- It will iterate through each of the question that why it uses foreach -->
 							<?php foreach(json_decode($row['frm_option']) as $k => $v): 
 							  // This part was used to calculate the percentage of repondent that have already select the answer
 								// QUESTION
@@ -91,12 +92,12 @@ while($row=$answers->fetch_assoc()){
 									<div class="d-flex w-100">
 									<span class=""><?php echo isset($ans[$row['id']][$k]) ? count($ans[$row['id']][$k]) : 0 ?>/<?php echo $taken ?></span>
 									<div class="mx-1 col-sm-8"">
-									<div class="progress w-100" >
-					                  <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $prog ?>%">
-					                    <span class="sr-only"><?php echo $prog ?>%</span>
-					                  </div>
-					                </div>
-					                </div>
+										<div class="progress w-100" >
+											<div class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $prog ?>%">
+												<span class="sr-only"><?php echo $prog ?>%</span>
+											</div>
+										</div>
+					        </div>
 					                <span class="badge badge-info"><?php echo $prog ?>%</span>
 									</div>
 								</li>

@@ -7,8 +7,8 @@ foreach($qry as $k => $v){
 		$k = 'stitle';
 	$$k = $v;
 }
-$taken = $conn->query("SELECT distinct(user_id) from answers where survey_id ={$id}")->num_rows;
-$answers = $conn->query("SELECT a.*,q.type from answers a inner join questions q on q.id = a.question_id where a.survey_id ={$id}");
+$taken = $conn->query("SELECT distinct(user_id) from answers where survey_id = ".$id)->num_rows;
+$answers = $conn->query("SELECT a.*,q.type from answers a inner join questions q on q.id = a.question_id where a.survey_id = ".$id);
 $ans = array();
 
 while($row=$answers->fetch_assoc()){
