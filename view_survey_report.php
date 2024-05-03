@@ -78,7 +78,7 @@ while($row=$answers->fetch_assoc()){
 								<ul>
 							<!-- It will iterate through each of the question that why it uses foreach -->
 							<?php foreach(json_decode($row['frm_option']) as $k => $v): 
-							  // This part was used to calculate the percentage of repondent that have already select the answer
+							  // This part was used to calculate the percentage of respondent that have already select the answer
 								// QUESTION
 								// 1. Kenapa declare as $ans[]?
 								//    My Answer: Because we want to store the value in array			
@@ -141,6 +141,7 @@ while($row=$answers->fetch_assoc()){
 	$('#print').click(function(){
 		start_load()
 		var nw = window.open("print_report.php?id=<?php echo $id ?>","_blank","width=800,height=600")
+		  // Default syntax is window.print(). but it uses nw refer to the page report
 			nw.print()
 			setTimeout(function(){
 				nw.close()

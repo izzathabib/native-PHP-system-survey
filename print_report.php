@@ -1,14 +1,21 @@
 <?php include 'header.php' ?>
 <?php include 'db_connect.php' ?>
 <?php 
+// QUESTION
+// 1. Kenapa fetch as an array?
+//    To handle multiple column from a single record
+
+// Fetch survey data as an array
 $qry = $conn->query("SELECT * FROM survey_set where id = ".$_GET['id'])->fetch_array();
 foreach($qry as $k => $v){
 	if($k == 'title')
 		$k = 'stitle';
 	$$k = $v;
 }
+																																			// num_rows: Get number of rows in a result
 $taken = $conn->query("SELECT distinct(user_id) from answers where survey_id = ".$id)->num_rows;
 $answers = $conn->query("SELECT a.*,q.type from answers a inner join questions q on q.id = a.question_id where a.survey_id = ".$id);
+// Another way to assign variable as array: $ans = [];
 $ans = array();
 
 while($row=$answers->fetch_assoc()){

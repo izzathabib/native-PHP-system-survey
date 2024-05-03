@@ -84,6 +84,7 @@ Class Action {
 				}
 			}
 		}
+		// Check if there is another user with the same email
 		$check = $this->db->query("SELECT * FROM users where email ='$email' ".(!empty($id) ? " and id != {$id} " : ''))->num_rows;
 		if($check > 0){
 			return 2;

@@ -38,6 +38,7 @@
 	 <div class="col-12">
           <div class="card">
           	<div class="card-body">
+              <!-- $_SESSION store information about user's session -->
           		Welcome <?php echo $_SESSION['login_name'] ?>!
           	</div>
           </div>
